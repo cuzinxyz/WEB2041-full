@@ -1,0 +1,52 @@
+RewriteEngine On
+
+# PRODUCT.
+RewriteRule ^admin/add-product admin/controllers/add.php?product [L]
+RewriteRule ^admin/update-product/([0-9]+)$ admin/controllers/edit.php?product=$1 [L]
+RewriteRule ^admin/list-product$ admin/controllers/product.php [L]
+RewriteRule ^admin/delete-product/([0-9]+)$ admin/controllers/delete.php?idP=$1 [L]
+
+# CATEGORY.
+RewriteRule ^admin/add-category admin/controllers/add.php?category [L]
+RewriteRule ^admin/update-category/([0-9]+)$ admin/controllers/edit.php?category=$1 [L]
+RewriteRule ^admin/list-categories$ admin/controllers/categories.php [L]
+RewriteRule ^admin/delete-category/([0-9]+)$ admin/controllers/delete.php?idC=$1 [L]
+
+# USER.
+RewriteRule ^admin/add-user$ admin/controllers/add.php?user [L]
+RewriteRule ^admin/update-user/([0-9]+)$ admin/controllers/edit.php?user=$1 [L]
+RewriteRule ^admin/list-user$ admin/controllers/user.php [L]
+RewriteRule ^admin/delete-user/([0-9]+)$ admin/controllers/delete.php?idU=$1 [L]
+
+# USER URL & ADMIN URL.
+RewriteRule ^admin/$ admin/controllers/index.php [L]
+RewriteRule ^login$ controllers/login.php [L]
+RewriteRule ^register$ controllers/register.php [L]
+RewriteRule ^profile$ controllers/profile.php [L]
+RewriteRule ^logout$ controllers/logout.php [L]
+
+# REVIEW PRODUCT.
+RewriteRule ^admin/reviews$ admin/controllers/reviews.php [L]
+RewriteRule ^admin/update-review/([0-9]+)$ admin/controllers/edit.php?idR=$1 [L]
+RewriteRule ^admin/delete-review/([0-9]+)$ admin/controllers/delete.php?idR=$1 [L]
+
+# SLIDER.
+RewriteRule ^admin/delete-slider/([0-9]+)$ admin/controllers/delete.php?idS=$1 [L]
+RewriteRule ^admin/slider$ admin/controllers/slider.php [L]
+
+# DETAIL & FILTER PRODUCT & FILTER CATEGORY.
+RewriteRule ^product/([0-9]+)$ controllers/detail.php?id=$1 [L]
+RewriteRule ^chan-vay$ controllers/filter.php?name=dress [L]
+RewriteRule ^quan-short$ controllers/filter.php?name=short [L]
+RewriteRule ^ao-khoac$ controllers/filter.php?name=coat [L]
+RewriteRule ^quan-au$ controllers/filter.php?name=trousers [L]
+RewriteRule ^ao-so-mi$ controllers/filter.php?name=shirt [L]
+RewriteRule ^shop$ controllers/filter.php?name=all&page=1 [L]
+RewriteRule ^shop/([0-9]+)$ controllers/filter.php?name=all&page=$1 [L]
+RewriteRule ^category/([0-9]+)$ controllers/filter.php?category=$1 [L]
+
+# CHANGE URL ERROR PAGE.
+ErrorDocument 400 /views/404.php
+ErrorDocument 403 /views/404.php
+ErrorDocument 404 /views/404.php
+ErrorDocument 500 /views/404.php
